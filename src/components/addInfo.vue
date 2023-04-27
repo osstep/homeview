@@ -7,9 +7,7 @@ const props = defineProps({
     data: Object
 })
 
-watch(props.data, () => {
-  console.log(props.data);
-})
+
 const defaultValues =  reactive({
   spendingValue: '',
   amoutValue: '',
@@ -25,6 +23,13 @@ const toggleEdit = (item) => {
   item.edit = item.edit ? false : true
 }
 
+const deleteItem = (item) => {
+  props.data.forEach((element, index) => {
+    if (item == element) {
+      props.data.splice(index, 1)
+    }
+  });
+}
 const setInfo = (item) => {
   //установить отсток
   if (defaultValues.amoutValue) {
@@ -43,8 +48,16 @@ const setInfo = (item) => {
   }
   // добавление количества в остаток
   if (defaultValues.addAmount) {
-      item.amount += +defaultValues.addAmount;
-      defaultValues.addAmount = ''
+      if(item.amount + +defaultValues.addAmount > item.defaultAmount) {
+        item.amount += +defaultValues.addAmount;
+        item.defaultAmount = item.amount
+        defaultValues.addAmount = ''
+
+      } else {
+        item.amount += +defaultValues.addAmount;
+        defaultValues.addAmount = ''
+
+      }
   }
   //смена названия 
   if (defaultValues.nameValue) {
@@ -58,12 +71,13 @@ const setInfo = (item) => {
 <template>
 <div class="wrapper">
 
-  <div class="wrapper__item" v-for="item in computedData">
+  <div class="wrapper__item" v-for="item in computedData" :key="item.id">
     <div v-if="!item.edit">
       {{ item.name }} <br>остаток {{ item.amount }} <br>расход {{ item.spending }} <br>начальное значение: {{ item.defaultAmount }}
       <pieCharts :data="computedData" :item="item"></pieCharts>
       <div>
         <button type="button" class="btn btn-primary" @click="toggleEdit(item)">Редактировать</button>
+        <button type="button" class="btn btn-primary" @click="deleteItem(item)">Удалить</button>
       </div>
     </div>
               

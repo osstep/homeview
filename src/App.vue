@@ -1,5 +1,6 @@
 <script setup>
-import {ref, reactive, onMounted, watch} from 'vue'
+import {ref, reactive, onMounted, watchEffect} from 'vue'
+import axios from 'axios'
 import addInfo from './components/addInfo.vue';
 import addNewItem from './components/addNewItem.vue';
 import pieCharts from './components/pieCharts.vue';
@@ -19,8 +20,7 @@ setInterval(() => {
       item.amount = item.amount - item.spending
     }
   })
-}, 1000)
-
+}, 5000)
 
 
 </script>
