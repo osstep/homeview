@@ -64,6 +64,7 @@ const setInfo = (item) => {
     item.name = defaultValues.nameValue;
     defaultValues.nameValue = ''
   }
+  toggleEdit(item)
 }
 </script>
 
@@ -108,6 +109,7 @@ const setInfo = (item) => {
   border: 1px solid;
   height: 450px;
   width: 300px;
+  margin-bottom: 20px;
 }
 .item__modal {
   height: 100%;
@@ -117,6 +119,10 @@ const setInfo = (item) => {
   justify-content: center;
 
 
+}
+button {
+  margin: 5px;
+  
 }
 
 </style>

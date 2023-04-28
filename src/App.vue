@@ -4,14 +4,14 @@ import axios from 'axios'
 import addInfo from './components/addInfo.vue';
 import addNewItem from './components/addNewItem.vue';
 import pieCharts from './components/pieCharts.vue';
-let id = 0;
+let id = ref(0);
 
 
 const data = reactive([
-  {id: id++, name: 'Мусорные пакеты', amount: 20, defaultAmount: 30, spending: 1, edit: false},
-  {id: id++, name: 'Таблетки для посудомойки', amount: 30, defaultAmount: 30, spending: 2, edit: false},
-  {id: id++, name: 'Шампунь', amount: 30, defaultAmount: 30, spending: 1, edit: false},
-  {id: id++, name: 'Гель для душа', amount: 30, defaultAmount: 30, spending: 1, edit: false}
+  {id: id.value++, name: 'Мусорные пакеты', amount: 20, defaultAmount: 30, spending: 1, edit: false},
+  {id: id.value++, name: 'Таблетки для посудомойки', amount: 30, defaultAmount: 30, spending: 2, edit: false},
+  {id: id.value++, name: 'Шампунь', amount: 30, defaultAmount: 30, spending: 1, edit: false},
+  {id: id.value++, name: 'Гель для душа', amount: 30, defaultAmount: 30, spending: 1, edit: false}
 ])
 
 setInterval(() => {
