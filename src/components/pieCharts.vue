@@ -65,8 +65,9 @@
 
 <style scoped>
   .pie {
-    width: 300px;
+    width: 250px;
     position: relative;
+    margin: 0 auto;
   }
 
   .amount {

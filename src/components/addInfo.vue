@@ -106,10 +106,13 @@ const setInfo = (item) => {
   flex-wrap: wrap;
 }
 .wrapper__item {
-  border: 1px solid;
+  
   height: 450px;
   width: 300px;
+  padding: 5px;
   margin-bottom: 20px;
+  border-radius: 10px;
+  background: rgb(135, 194, 196);
 }
 .item__modal {
   height: 100%;
