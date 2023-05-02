@@ -73,12 +73,12 @@ const setInfo = (item) => {
 <div class="wrapper">
 
   <div class="wrapper__item" v-for="item in computedData" :key="item.id">
-    <div v-if="!item.edit">
-      {{ item.name }} <br>остаток {{ item.amount }} <br>расход {{ item.spending }} <br>начальное значение: {{ item.defaultAmount }}
+    <div class="item__info" v-if="!item.edit">
+      <div class="item__title">{{ item.name }}</div>
       <pieCharts :data="computedData" :item="item"></pieCharts>
-      <div>
-        <button type="button" class="btn btn-primary" @click="toggleEdit(item)">Редактировать</button>
-        <button type="button" class="btn btn-primary" @click="deleteItem(item)">Удалить</button>
+      <div class="edit__menu">
+        <div class="edit__wrapper__item" @click="toggleEdit(item)">&#9998;</div>
+        <div class="edit__wrapper__item" @click="deleteItem(item)">&#10006;</div>
       </div>
     </div>
               
@@ -107,12 +107,27 @@ const setInfo = (item) => {
 }
 .wrapper__item {
   
-  height: 450px;
+  height: 400px;
   width: 300px;
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 10px;
-  background: rgb(135, 194, 196);
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(202,226,255,1) 100%);
+}
+.item__info {
+  position: relative;
+}
+.item__title {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding-top: 20px;
+  height: 80px;
+  text-transform: uppercase;
+  
 }
 .item__modal {
   height: 100%;
@@ -122,6 +137,17 @@ const setInfo = (item) => {
   justify-content: center;
 
 
+}
+.edit__menu {
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.edit__wrapper__item {
+  margin-right: 5px;
+  cursor: pointer;
 }
 button {
   margin: 5px;

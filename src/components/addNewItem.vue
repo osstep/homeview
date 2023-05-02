@@ -34,6 +34,8 @@ const addItem = () => {
         values.name = ''
         values.amount = ''
         values.spending = ''
+
+        toggleFlag()
         
     }
 }
@@ -49,7 +51,7 @@ const addItem = () => {
             <input v-model="values.amount" type="number" placeholder="Количество">
             <input v-model="values.spending" type="number" placeholder="Расход">
             <div>
-                <button type="button" class="btn btn-primary" @click="addItem">Ок</button>
+                <button type="button" class="btn btn-primary" @click="addItem">ок</button>
                 <button type="button" class="btn btn-primary" @click="toggleFlag">закрыть</button>
             </div>
         </div>
@@ -83,6 +85,7 @@ const addItem = () => {
     }
     button {
         margin-right: 10px;
+        width: 90px;
     }
     h4 {
         margin-bottom: 20px;
